@@ -2,9 +2,11 @@
 
 ### Project Links:
 
-- [GH Pages Link](https://kmilligan.info/ga_tic_tac_toe/)
-- [Project Requirements Link](https://git.generalassemb.ly/java-interapt-11-8/Project-1)
-- [Evaluation Rubric](https://git.generalassemb.ly/java-interapt-11-8/Project-1/blob/master/evaluation.md)
+[GH Pages Link](https://kmilligan.info/ga_tic_tac_toe/)
+
+[Project Requirements Link](https://git.generalassemb.ly/java-interapt-11-8/Project-1)
+
+[Evaluation Rubric](https://git.generalassemb.ly/java-interapt-11-8/Project-1/blob/master/evaluation.md)
 
 ## Big Goals
 
@@ -51,9 +53,7 @@ As a user, I should:
 
 ## Submission
 
-Create a new repository on your personal public GitHub account. Then, submit your project as an issue to this repo:
-
-point_right Submit Issue Here
+Create a new repository on your personal public GitHub account. Then, submit your project as an issue to interapt repo
 
 You must turn in something before presentations begin. However, you're welcome to continue working on it over the course of SEI and beyond!
 
