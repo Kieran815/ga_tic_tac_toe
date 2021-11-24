@@ -55,4 +55,4 @@ With your submission please include any questions you'd like answered, or specif
 
 ### Evaluation
 
-  [Evaluation Rubric] (https://git.generalassemb.ly/java-interapt-11-8/Project-1/blob/master/evaluation.md)
+  [Evaluation Rubric](https://git.generalassemb.ly/java-interapt-11-8/Project-1/blob/master/evaluation.md)
