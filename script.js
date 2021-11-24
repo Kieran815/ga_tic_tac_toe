@@ -2,6 +2,8 @@ console.log('Lined Up')
 
 // GH Pages Link: https://kmilligan.info/ga_tic_tac_toe/
 
+// Project Requirements Link: https://git.generalassemb.ly/java-interapt-11-8/Project-1
+
 /*
 Your Tic Tac Toe app must:
 

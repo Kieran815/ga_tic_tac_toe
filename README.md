@@ -1,6 +1,7 @@
 # ga_tic_tac_toe
 
 ## Big Goals
+
 - Build a web application from scratch, without a starter codebase
 - Use your programming skills to work out the game logic for a simple game like Tic Tac Toe
 - Separate HTML, CSS, and JavaScript files in your application
@@ -10,6 +11,7 @@
 
 ## Technical Requirements
 ### Your Tic Tac Toe app must:
+
 - Render a game board in the browser
 - Switch turns between X and O (or whichever markers you select)
 - Visually display which side won if a player gets three in a row, or show a draw if neither player wins
@@ -22,6 +24,8 @@
 - Have well-formatted, and well-commented code
 
 ### User Stories:
+
+As a user, I should:
 - be able to start a new tic tac toe game
 - be able to click on a square to add X first and then O, and so on
 - be shown a message after each turn for if I win, lose, tie or who's turn it is next
@@ -31,6 +35,7 @@
 - be able to play the game again without refreshing the page
 
 ## README Suggestions
+
 - List technologies used
 - Link to wireframes and user stories.
 - Document your planning and tell a story about your development process and problem-solving strategy.
@@ -39,6 +44,7 @@
 - Describe how some of your favorite functions work
 
 ## Submission
+
 Create a new repository on your personal public GitHub account. Then, submit your project as an issue to this repo:
 
 point_right Submit Issue Here
@@ -48,4 +54,5 @@ You must turn in something before presentations begin. However, you're welcome t
 With your submission please include any questions you'd like answered, or specific things on which you'd like us to focus when giving feedback.
 
 ### Evaluation
+
   [Evaluation Rubric] (https://git.generalassemb.ly/java-interapt-11-8/Project-1/blob/master/evaluation.md)
