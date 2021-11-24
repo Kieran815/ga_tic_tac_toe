@@ -1,5 +1,11 @@
 # ga_tic_tac_toe
 
+### Project Links:
+
+- [GH Pages Link](https://kmilligan.info/ga_tic_tac_toe/)
+- [Project Requirements Link](https://git.generalassemb.ly/java-interapt-11-8/Project-1)
+- [Evaluation Rubric](https://git.generalassemb.ly/java-interapt-11-8/Project-1/blob/master/evaluation.md)
+
 ## Big Goals
 
 - Build a web application from scratch, without a starter codebase
@@ -52,7 +58,3 @@ point_right Submit Issue Here
 You must turn in something before presentations begin. However, you're welcome to continue working on it over the course of SEI and beyond!
 
 With your submission please include any questions you'd like answered, or specific things on which you'd like us to focus when giving feedback.
-
-### Evaluation
-
-  [Evaluation Rubric](https://git.generalassemb.ly/java-interapt-11-8/Project-1/blob/master/evaluation.md)
