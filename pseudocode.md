@@ -4,7 +4,8 @@
 
 - **Use JavaScript for DOM manipulation**
 
-  Lets try to leave the html entirely alone and do all this with JS.
+  Lets try to leave the html entirely alone and do all this with `JS`.
+  Also, be a boss and use ternary instead of if/else
 <br/><br/>
 
 - Render a game board in the browser
@@ -22,16 +23,20 @@
 
 - Switch turns between X and O (or whichever markers you select)
   
-  create player variable * 2
+  create variables for player arrays
   create current player variable in js
+    added random selection for starting player
   method
     toggle player on current player piece
+    ternary statement to switch x & o
 
 <br/><br/>
 
 - Visually display which side won if a player gets three in a row, or show a draw if neither player wins
 
   create win conditions via arrays
-    match arrays to current
+    match winning arrays to current player arrays
+      `.includes`
 
+  push Win message to header via `innerText`
 <br/><br/>
