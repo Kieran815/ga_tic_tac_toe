@@ -43,30 +43,22 @@ getScreen.appendChild(createBoard);
 const board = document.querySelector('.board');
 
 // ***** GLOBAL VARIABLES *****
-
 const winSets = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
 
 const players = ["X", "O"];
 // arrays to push clicked square ids to
+let currentPlayer;
+let playerArr;
 const xArr = [];
 const oArr = [];
-let playerArr;
 // ***** EVENT HANDLERS *****
 
 // Randomize starting player
-let currentPlayer = players[Math.floor(Math.random() * players.length)];
+currentPlayer = players[Math.floor(Math.random() * players.length)];
 
 // change player
 const togglePlayer = () => {
   currentPlayer === "X" ? currentPlayer = "O" : currentPlayer = "X";
-  
-}
-// check player array against winning arrays
-const checkWin = (curArr, wins) => {
-  wins.forEach(win => {
-    win.every(num => curArr.includes(num)) ? console.log('Winner') : console.log('Not Yet');
-  })
-  
   
 }
 
@@ -100,9 +92,35 @@ const fillBoard = () => {
   console.log(currentPlayer);
 }
 
+const resetGame = () => {
+  xArr.length = 0;
+  oArr.length = 0;
+  board.innerText = '';
+  currentPlayer = players[Math.floor(Math.random() * players.length)];;
+  fillBoard();
+}
 
-
-
+// check player array against winning arrays
+const checkWin = (curArr, wins) => {
+  const getAllSquares = document.querySelectorAll(".square");
+  console.log(xArr.concat(oArr).length);
+  wins.forEach(win => {
+    if (win.every(num => curArr.includes(num))) {      
+      getAllSquares.forEach(square => {
+        square.removeEventListener('click', squareClick);
+      });
+      confirm(`${currentPlayer} Wins! Play Again?`);
+      if (confirm) {
+        resetGame();
+      }
+    } else if (xArr.concat(oArr).length === 9) {
+      confirm(`Draw... Play Again?`);
+      if (confirm) {
+        resetGame();
+      }
+    }
+  })
+}
 
 pageBody.addEventListener('load', fillBoard())
 
