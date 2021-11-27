@@ -18,8 +18,9 @@ footer {
 #game_screen {
   height: 80vh;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center; 
   background: gray;
 }
 

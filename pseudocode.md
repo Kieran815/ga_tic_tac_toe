@@ -27,7 +27,7 @@
   create current player variable in js
     added random selection for starting player
   method
-    toggle player on current player piece
+    toggle player on current player square selection
     ternary statement to switch x & o
 
 <br/><br/>

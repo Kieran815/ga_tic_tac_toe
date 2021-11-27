@@ -1,46 +1,55 @@
 /*
-Your Tic Tac Toe app must:
-
-1) Render a game board in the browser
-Switch turns between X and O (or whichever markers you select)
-Visually display which side won if a player gets three in a row, or show a draw if neither player wins
-Deploy your game online, where the rest of the world can access it via GitHub Pages
-Use semantic markup for HTML and CSS (adhere to best practices)
-
 User Stories:
-- be able to start a new tic tac toe game
-- be able to click on a square to add X first and then O, and so on
-- be shown a message after each turn for if I win, lose, tie or who's turn it is next
-- - not be able to click the same square twice
-be shown a message when I win, lose or tie
-- not be able to continue playing once I win, lose, or tie
-- be able to play the game again without refreshing the page
+- be shown a message after each turn for if I win, lose, tie or who"s turn it is next
 */
 
 
 // ********** CREATE MAIN ELEMENTS **********
-const pageBody = document.querySelector('body');
+const pageBody = document.querySelector("body");
 // create header
-const createHeader = document.createElement('header');
+const createHeader = document.createElement("header");
 pageBody.appendChild(createHeader);
 // create game screen
-const createScreen = document.createElement('main');
-createScreen.setAttribute('id', 'game_screen');
+const createScreen = document.createElement("main");
+createScreen.setAttribute("id", "game_screen");
 pageBody.appendChild(createScreen);
 // create footer
-const createFooter = document.createElement('footer');
+const createFooter = document.createElement("footer");
 pageBody.appendChild(createFooter);
 
-// retrieve main elements
-const getHeader = document.querySelector('header');
-const getScreen = document.querySelector('#game_screen');
-const getFooter = document.querySelector('footer');
+// ***** retrieve main elements
+const getHeader = document.querySelector("header");
+const getScreen = document.querySelector("#game_screen");
+const getFooter = document.querySelector("footer");
+
+// ********** CREATE SECONDARY ELEMENTS **********
+// create game status indicator
+const createGameStatus = document.createElement("section");
+const update = document.createElement("p");
+update.setAttribute("id", "game-status");
+update.innerText = `Player Move: `;
+const updateSpan = document.createElement("span");
+updateSpan.innerText = "Status";
+createScreen.appendChild(createGameStatus);
+createGameStatus.appendChild(update);
+update.appendChild(updateSpan);
 
 // create board on screen
-const createBoard = document.createElement('section');
-createBoard.classList.add('board');
+const createBoard = document.createElement("section");
+createBoard.classList.add("board");
 getScreen.appendChild(createBoard);
-const board = document.querySelector('.board');
+
+// reset button
+const createResetButton = document.createElement('button');
+createResetButton.setAttribute('id', 'reset-btn');
+createResetButton.innerText = "Reset Game";
+createResetButton.style.visibility = "hidden";
+getScreen.appendChild(createResetButton);
+
+// ***** retrieve secondary elements
+const board = document.querySelector(".board");
+const gameStatus = document.querySelector("#game-status");
+console.log(gameStatus);
 
 // ***** GLOBAL VARIABLES *****
 const winSets = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
@@ -51,35 +60,34 @@ let currentPlayer;
 let playerArr;
 const xArr = [];
 const oArr = [];
-// ***** EVENT HANDLERS *****
 
+// ***** EVENT HANDLERS *****
 // Randomize starting player
 currentPlayer = players[Math.floor(Math.random() * players.length)];
 
 // change player
 const togglePlayer = () => {
   currentPlayer === "X" ? currentPlayer = "O" : currentPlayer = "X";
-  
 }
 
 // square click handler, passed to `makeSquare`;
 const squareClick = (e) => {
   currentPlayer === "X" ? playerArr = xArr : playerArr = oArr;
   playerArr.push(parseInt(e.target.id));
-  console.log(playerArr);
   e.target.classList.add(`${currentPlayer}`);
-  e.target.removeEventListener('click', squareClick);
+  e.target.removeEventListener("click", squareClick);
   checkWin(playerArr, winSets);
   togglePlayer();
+  updateStatus();
 }
 
 // make square and push to board
 const makeSquare = (value) => {
   // create square div
-  let square = document.createElement('div');
-  square.classList.add('square');
-  square.setAttribute('id', value);
-  square.addEventListener('click', squareClick)
+  let square = document.createElement("div");
+  square.classList.add("square");
+  square.setAttribute("id", value);
+  square.addEventListener("click", squareClick)
   // push square to board
   board.appendChild(square);
 }
@@ -89,42 +97,62 @@ const fillBoard = () => {
   for(let i = 1; i <= 9; i++) {
     makeSquare(i);
   }
-  console.log(currentPlayer);
 }
 
-const resetGame = () => {
-  xArr.length = 0;
-  oArr.length = 0;
-  board.innerText = '';
-  currentPlayer = players[Math.floor(Math.random() * players.length)];;
-  fillBoard();
+// update Game Status
+const updateStatus = () => {
+  const getStatusSpan = gameStatus.querySelector("span");
+  getStatusSpan.innerText = `${currentPlayer}`;
 }
+updateStatus(); // invoke immediately for initial status check
+
+const resetGame = () => {
+  xArr.length = 0; // reset player selection arrays
+  oArr.length = 0;
+  board.innerText = ""; // wipe board
+  document.querySelector("#reset-btn").style.visibility = "hidden";
+  currentPlayer = players[Math.floor(Math.random() * players.length)]; // pick random player to start
+  fillBoard(); // re-fill board
+  updateStatus();
+
+}
+createResetButton.addEventListener('click', resetGame); // add reset function to button
 
 // check player array against winning arrays
 const checkWin = (curArr, wins) => {
   const getAllSquares = document.querySelectorAll(".square");
-  console.log(xArr.concat(oArr).length);
-  wins.forEach(win => {
-    if (win.every(num => curArr.includes(num))) {      
+  if (xArr.concat(oArr).length === 9) { //check for draw
+    currentPlayer = "Draw";
+    getAllSquares.forEach(square => {
+      square.removeEventListener("click", squareClick);
+    });
+    let result = confirm(`Draw... Play Again?`);
+    if (result) {
+      resetGame();
+    } else {
+      document.querySelector("#reset-btn").style.visibility = "visible";
+      return;
+    }
+  }
+  wins.forEach(win => { // for each winning array combination
+    if (win.every(num => curArr.includes(num))) { // compare to current player's selection
+
+    updateStatus();
       getAllSquares.forEach(square => {
-        square.removeEventListener('click', squareClick);
+        square.removeEventListener("click", squareClick);
       });
-      confirm(`${currentPlayer} Wins! Play Again?`);
-      if (confirm) {
+      let result = confirm(`${currentPlayer} Wins! Play Again?`);
+      if (result) {
         resetGame();
-      }
-    } else if (xArr.concat(oArr).length === 9) {
-      confirm(`Draw... Play Again?`);
-      if (confirm) {
-        resetGame();
+      } else {
+
+        document.querySelector("#reset-btn").style.visibility = "visible";
       }
     }
   })
 }
 
-pageBody.addEventListener('load', fillBoard())
+pageBody.addEventListener("load", fillBoard())
 
-
-
-// *** KEEP HERE TO LOG CURRENT PAGE NODES ***
+// ******************
 console.log(pageBody);
