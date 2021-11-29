@@ -3,7 +3,6 @@ User Stories:
 - be shown a message after each turn for if I win, lose, tie or who"s turn it is next
 */
 
-
 // ********** CREATE MAIN ELEMENTS **********
 const pageBody = document.querySelector("body");
 // create header
@@ -136,8 +135,7 @@ const checkWin = (curArr, wins) => {
   }
   wins.forEach(win => { // for each winning array combination
     if (win.every(num => curArr.includes(num))) { // compare to current player's selection
-
-    updateStatus();
+      updateStatus();
       getAllSquares.forEach(square => {
         square.removeEventListener("click", squareClick);
       });
@@ -145,7 +143,6 @@ const checkWin = (curArr, wins) => {
       if (result) {
         resetGame();
       } else {
-
         document.querySelector("#reset-btn").style.visibility = "visible";
       }
     }
