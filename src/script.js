@@ -1,8 +1,3 @@
-/*
-User Stories:
-- be shown a message after each turn for if I win, lose, tie or who"s turn it is next
-*/
-
 // ********** CREATE MAIN ELEMENTS **********
 const pageBody = document.querySelector("body");
 // create header
@@ -51,7 +46,7 @@ const gameStatus = document.querySelector("#game-status");
 console.log(gameStatus);
 
 // ***** GLOBAL VARIABLES *****
-const winSets = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+const winSets = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
 
 const players = ["X", "O"];
 // arrays to push clicked square ids to
@@ -113,7 +108,6 @@ const resetGame = () => {
   currentPlayer = players[Math.floor(Math.random() * players.length)]; // pick random player to start
   fillBoard(); // re-fill board
   updateStatus();
-
 }
 createResetButton.addEventListener('click', resetGame); // add reset function to button
 
