@@ -78,10 +78,11 @@ let games = {
   xArr: [],
   oWins: 0,
   oArr: [],
-  winSets: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]],
   computer: false,
   gameOver: false
 }
+
+let winSets = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
 
 localStorage.getItem("gameSave") ? games = JSON.parse(localStorage.getItem("gameSave")) : ""; // search for existing saveGame data in localStorage
 
@@ -108,8 +109,6 @@ playerNum();
 
 games.computer === true ? currentPlayer = "X" : currentPlayer = players[Math.floor(Math.random() * players.length)]; // Randomize starting player, unless playing computer
 
-// document.querySelector("#takeoff").play();
-
 const togglePlayer = () => { // change player & run comp player
   currentPlayer === "X" ? currentPlayer = "O" : currentPlayer = "X";
   if (games.computer === true && currentPlayer === "O") {
@@ -125,7 +124,7 @@ const squareClick = (e) => { // square click handler, passed to `makeSquare`;
   e.target.classList.add(`${currentPlayer}`); // add X or O
   e.target.classList.add("selected");
   e.target.removeEventListener("click", squareClick); // remove click function
-  checkWin(playerArr, games.winSets); // see if selection wins game
+  checkWin(playerArr, winSets); // see if selection wins game
   togglePlayer(); // if no win
   updateStatus();
 };
@@ -157,7 +156,7 @@ const compTurn = () => { // computer choice
       compMove.classList.add("selected"); // prevent post-click cursor events
       games.oArr.push(parseInt(compMove.getAttribute("id"))); // push square id value to oArr
       compMove.removeEventListener("click", squareClick); // remove click function
-      checkWin(games.oArr, games.winSets); // check computer array against winning arrays
+      checkWin(games.oArr, winSets); // check computer array against winning arrays
     }
   }
   updateStatus();
@@ -208,4 +207,5 @@ const checkWin = (curArr, wins) => { // check player array against winning array
     result ? resetGame() : document.querySelector("#reset-btn").style.visibility = "visible";
   }
 }
+
 pageBody.addEventListener("load", fillBoard());
