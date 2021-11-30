@@ -39,30 +39,23 @@
 ### User Stories: **COMPLETED**
 
 As a user, I should:
-- be able to start a new tic tac toe game
-  **COMPLETED**
-- be able to click on a square to add X first and then O, and so on
-  **COMPLETED**
-- be shown a message after each turn for if I win, lose, tie or who's turn it is next
-  **COMPLETED**
-- not be able to click the same square twice
-  **COMPLETED**
-- be shown a message when I win, lose or tie
-  **COMPLETED**
-- not be able to continue playing once I win, lose, or tie
-  **COMPLETED**
-- be able to play the game again without refreshing the page
-  **COMPLETED**
+- be able to start a new tic tac toe game **COMPLETED**
+- be able to click on a square to add X first and then O, and so on **COMPLETED**
+- be shown a message after each turn for if I win, lose, tie or who's turn it is next **COMPLETED**
+- not be able to click the same square twice **COMPLETED**
+- be shown a message when I win, lose or tie **COMPLETED**
+- not be able to continue playing once I win, lose, or tie **COMPLETED**
+- be able to play the game again without refreshing the page **COMPLETED**
 
 ### Potential Extra Tic Tac Toe Features
 
 - Keep track of multiple game rounds with a win, lose and tie counter **COMPLETED**
 - Allow players to customize their tokens (X, O, name, picture, etc)
-- Use localStorage to persist data locally to allow games to continue after page refresh or loss of internet connectivity
+- Use localStorage to persist data locally to allow games to continue after page refresh or loss of internet connectivity **COMPLETED**
 - Involve Audio in your game
 - Create an AI opponent: teach JavaScript to play an unbeatable game against you **COMPLETED**
 - Make your site fully responsive so that it is playable from a mobile phone **COMPLETED**
-- Get inventive with your styling e.g. use hover effects or animations
+- Get inventive with your styling e.g. use hover effects or animations **COMPLETED**
 
 ## README Suggestions
 

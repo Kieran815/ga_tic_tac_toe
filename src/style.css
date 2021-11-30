@@ -15,7 +15,6 @@ header {
   color: white;
   font-size: 4em;
   width: 100%;
-  overflow: hidden;
 }
 
 footer {
@@ -37,6 +36,7 @@ button {
 }
 
 #game-title {
+  overflow: hidden;
   animation: 5s slide-right;
 }
 
@@ -60,7 +60,7 @@ button {
   font-weight: 600;
   width:100%;
   /* overflow:hidden; */
-  animation: slide-left 10s;
+  animation: slide-left 5s;
 }
 
 #player-turn {
@@ -97,7 +97,6 @@ button {
 
 .square:hover {
   background: rgba(243,225,0, .5);
-  backdrop-filter: blur(2px);
 }
 
 .square:nth-child(1) {
@@ -127,19 +126,23 @@ button {
 
 @keyframes pulseO {
   0% {
-    background-color:rgba(243,225,0, .5)
+    background-color:rgba(243,225,0, .5);
+    backdrop-filter: blur(0px);
   }
   100% {
     background-color: rgba(255, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
   }
 }
 
 @keyframes pulseX {
   0% {
-    background-color:rgba(243,225,0, .5)
+    background-color:rgba(243,225,0, .5);
+    backdrop-filter: blur(0px);
   }
   100% {
     background-color: rgba(0, 255, 0, 0.5);
+    backdrop-filter: blur(2px);
   }
 }
 
@@ -148,9 +151,8 @@ button {
     margin-left: -100%;
     width: 300%;
   }
-
   to {
-    margin-left: 0%;
+    margin-right: -70%;
     width: 100%;
   }
 }
@@ -160,7 +162,6 @@ button {
     margin-left: 100%;
     width: 300%; 
   }
-
   to {
     margin-left: 0%;
     width: 100%;
