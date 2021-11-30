@@ -47,7 +47,7 @@ Upon deactivating the click, the function `checkWin` is called and processed, af
 - Separate HTML, CSS, and JavaScript files in your application **COMPLETED**
 - Build an application to a specification that someone else gives you **COMPLETED**
 - Build a dynamic game that allows two players to compete from the same computer **COMPLETED**
-- Craft a README.md file that explains your app to the world
+- Craft a README.md file that explains your app to the world **COMPLETED**
 
 ## Technical Requirements **COMPLETED**
 ### Your Tic Tac Toe app must: **COMPLETED**
