@@ -31,7 +31,12 @@ const getFooter = document.querySelector("footer");
 const createTitle = document.createElement("span");
 createTitle.setAttribute("id", "game-title");
 createTitle.innerText = `Conquest`;
-getHeader.appendChild(createTitle)
+getHeader.appendChild(createTitle);
+// footer
+const footerMessage = document.createElement("span");
+footerMessage.setAttribute("id", "game-footer");
+footerMessage.innerText = `A Game of Strategy`;
+getFooter.appendChild(footerMessage);
 // create game status indicator
 const createGameStatus = document.createElement("section");
 createGameStatus.setAttribute("id", "game-status");
