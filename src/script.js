@@ -63,7 +63,8 @@ const games = {
   oWins: 0,
   oArr: [],
   winSets: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]],
-  computer: false
+  computer: false,
+  gameOver: false
 }
 
 gameCounter.innerText = `Games Played: ${games.total} X: ${games.xWins} O: ${games.oWins} Draws: ${games.draws}`; // add text to `#game-counter`;
@@ -129,7 +130,7 @@ const compTurn = () => {
     getAllSquares.forEach(square => {
       if (!square.classList.contains("X") && !square.classList.contains("O")) compChoices.push(square); // push unclaimed squares to array
     })
-    if (compChoices.length > 0) {
+    if (compChoices.length > 0 && games.gameOver === false) {
       let compMove = compChoices[Math.floor(Math.random() * compChoices.length)]; // select random choice
       compMove.classList.add("O");
       compMove.classList.add("selected");
@@ -156,6 +157,7 @@ const resetGame = () => {
   document.querySelector("#reset-btn").style.visibility = "hidden"; // hide reset button
   currentPlayer = players[Math.floor(Math.random() * players.length)]; // pick random player to start
   fillBoard(); // re-fill board
+  games.gameOver = false;
   updateStatus(); // update current player
 }
 createResetButton.addEventListener("click", resetGame); // add reset function to button
@@ -163,13 +165,12 @@ createResetButton.addEventListener("click", resetGame); // add reset function to
 // check player array against winning arrays
 const checkWin = (curArr, wins) => {
   const getAllSquares = document.querySelectorAll(".square"); // get array of all squares
-  let gameOver = false;
   wins.forEach(win => { // for each winning array combination
     if (win.every(num => curArr.includes(num))) { // if match with current player"s selections
       games.total += 1; // add 1 to total counter
       currentPlayer === "X" ? games.xWins += 1 : games.oWins += 1; // add 1 to winner counter
       getAllSquares.forEach(square => square.removeEventListener("click", squareClick)); // remove click function
-      gameOver = true;
+      games.gameOver = true;
       updateStatus(); // update game status
       let result = confirm(`${currentPlayer} Wins! Play Again?`); // announce winner
       if (result) {
@@ -179,7 +180,7 @@ const checkWin = (curArr, wins) => {
       }
     }
   });
-  if (games.xArr.concat(games.oArr).length === 9 && gameOver === false) { //check for draw
+  if (games.xArr.concat(games.oArr).length === 9 && games.gameOver === false) { //check for draw
     games.total += 1; // add 1 to total counter
     games.draws += 1; // add 1 to draw counter
     getAllSquares.forEach(square => square.removeEventListener("click", squareClick)); // remove click function
