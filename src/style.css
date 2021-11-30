@@ -13,8 +13,8 @@ header {
   height: 10vh;
   background: purple;
   color: white;
-  font-size: 4em;
   width: 100%;
+  line-height: 0%;
 }
 
 footer {
@@ -36,9 +36,18 @@ button {
 }
 
 #game-title {
+  line-height: 8vh;
   overflow: hidden;
   animation: 5s slide-right;
+  font-size: 3em;
+  margin: 0;
+  padding: 0;
 }
+
+/* #game-title sub {
+  margin-top: 0;
+  font-size: 0.25em;
+} */
 
 #game_screen {
   height: 85vh;
@@ -181,6 +190,10 @@ button {
   .square {
     width: 150px;
     height: 150px;
+  }
+
+  #game-title {
+    font-size: 0.75em;
   }
 
   #game-status {

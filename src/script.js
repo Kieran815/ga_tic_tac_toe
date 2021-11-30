@@ -1,5 +1,16 @@
 // ********** CREATE MAIN ELEMENTS **********
 const pageBody = document.querySelector("body");
+// audio elements
+// game start
+const createStartSound = document.createElement('audio');
+createStartSound.setAttribute('id', 'takeoff');
+createStartSound.setAttribute('src', 'takeoff.mp3');
+pageBody.appendChild(createStartSound);
+// selection sound
+const createSelSound = document.createElement('audio');
+createSelSound.setAttribute('id', 'selSquare');
+createSelSound.setAttribute('src', 'selectSquare.mp3');
+pageBody.appendChild(createSelSound);
 // create header
 const createHeader = document.createElement("header"); 
 pageBody.appendChild(createHeader); 
@@ -19,7 +30,7 @@ const getFooter = document.querySelector("footer");
 // header title
 const createTitle = document.createElement("span");
 createTitle.setAttribute("id", "game-title");
-createTitle.innerText = `Tic-Tac-Toe`;
+createTitle.innerText = `Conquest`;
 getHeader.appendChild(createTitle)
 // create game status indicator
 const createGameStatus = document.createElement("section");
@@ -92,6 +103,8 @@ playerNum();
 
 games.computer === true ? currentPlayer = "X" : currentPlayer = players[Math.floor(Math.random() * players.length)]; // Randomize starting player
 
+// document.querySelector("#takeoff").play();
+
 const togglePlayer = () => { // change player
   currentPlayer === "X" ? currentPlayer = "O" : currentPlayer = "X";
   if (games.computer === true && currentPlayer === "O") {
@@ -101,6 +114,7 @@ const togglePlayer = () => { // change player
 };
 
 const squareClick = (e) => { // square click handler, passed to `makeSquare`;
+  document.querySelector('#selSquare').play();
   currentPlayer === "X" ? playerArr = games.xArr : playerArr = games.oArr; // select correct array
   playerArr.push(parseInt(e.target.getAttribute("id"))); // push integer of target id
   e.target.classList.add(`${currentPlayer}`); // add X or O
@@ -135,7 +149,7 @@ const compTurn = () => { // computer choice
     if (compChoices.length > 0 && games.gameOver === false) {
       let compMove = compChoices[Math.floor(Math.random() * compChoices.length)]; // select random choice
       compMove.classList.add("O"); // add classes to random choices
-      compMove.classList.add("selected");
+      compMove.classList.add("selected"); // prevent post-click cursor events
       games.oArr.push(parseInt(compMove.getAttribute("id"))); // push square id value to oArr
       compMove.removeEventListener("click", squareClick); // remove click function
       checkWin(games.oArr, games.winSets); // check computer array against winning arrays
@@ -174,6 +188,7 @@ const checkWin = (curArr, wins) => { // check player array against winning array
       updateStatus(); // update game status
       games.total += 1; // add 1 to total counter
       currentPlayer === "X" ? games.xWins += 1 : games.oWins += 1; // add 1 to winner counter
+      document.querySelector('#takeoff').play()
       let result = confirm(`${currentPlayer} Wins! Play Again?`); // announce winner
       result ? resetGame() : document.querySelector("#reset-btn").style.visibility = "visible"; // reset game or reveal reset button
     }
@@ -188,3 +203,4 @@ const checkWin = (curArr, wins) => { // check player array against winning array
   }
 }
 pageBody.addEventListener("load", fillBoard());
+console.log(pageBody);
