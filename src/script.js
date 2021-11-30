@@ -106,11 +106,11 @@ const playerNum = () => {
 }
 playerNum();
 
-games.computer === true ? currentPlayer = "X" : currentPlayer = players[Math.floor(Math.random() * players.length)]; // Randomize starting player
+games.computer === true ? currentPlayer = "X" : currentPlayer = players[Math.floor(Math.random() * players.length)]; // Randomize starting player, unless playing computer
 
 // document.querySelector("#takeoff").play();
 
-const togglePlayer = () => { // change player
+const togglePlayer = () => { // change player & run comp player
   currentPlayer === "X" ? currentPlayer = "O" : currentPlayer = "X";
   if (games.computer === true && currentPlayer === "O") {
     compTurn();
@@ -203,9 +203,9 @@ const checkWin = (curArr, wins) => { // check player array against winning array
     games.total += 1; // add 1 to total counter
     games.draws += 1; // add 1 to draw counter
     getAllSquares.forEach(square => square.removeEventListener("click", squareClick)); // remove click function
+    document.querySelector('#takeoff').play()
     let result = confirm(`Draw... Play Again?`); // announce draw
     result ? resetGame() : document.querySelector("#reset-btn").style.visibility = "visible";
   }
 }
 pageBody.addEventListener("load", fillBoard());
-console.log(pageBody);
