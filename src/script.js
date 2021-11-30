@@ -18,7 +18,7 @@ const getFooter = document.querySelector("footer");
 // ********** CREATE SECONDARY ELEMENTS **********
 // header title
 const createTitle = document.createElement("span");
-createTitle.setAttribute("id", "game-title")
+createTitle.setAttribute("id", "game-title");
 createTitle.innerText = `Tic-Tac-Toe`;
 getHeader.appendChild(createTitle)
 // create game status indicator
@@ -79,14 +79,10 @@ if (parseInt(playComp) === 1) {
   alert("Playing Computer. Good Luck!")
   games.computer = true;
 } else if (parseInt(playComp) === 2) {
-  alert("Play Nice, Kids...")
-}
+  alert("Play Nice, Kids...");
+};
 
-if (games.computer === true) {
-  currentPlayer = "X";
-} else {
-  currentPlayer = players[Math.floor(Math.random() * players.length)]; // Randomize starting player
-}
+games.computer === true ? currentPlayer = "X" : currentPlayer = players[Math.floor(Math.random() * players.length)]; // Randomize starting player
 
 // change player
 const togglePlayer = () => {
@@ -95,7 +91,7 @@ const togglePlayer = () => {
     compTurn();
     togglePlayer();
   }
-}
+};
 
 // square click handler, passed to `makeSquare`;
 const squareClick = (e) => {
@@ -103,12 +99,11 @@ const squareClick = (e) => {
   playerArr.push(parseInt(e.target.getAttribute("id"))); // push integer of target id
   e.target.classList.add(`${currentPlayer}`); // add X or O
   e.target.classList.add("selected");
-  console.log(e.target.classList);
   e.target.removeEventListener("click", squareClick); // remove click function
   checkWin(playerArr, games.winSets); // see if selection wins game
   togglePlayer(); // if no win
   updateStatus();
-}
+};
 
 // make square and push to board
 const makeSquare = (value) => {
@@ -117,14 +112,14 @@ const makeSquare = (value) => {
   square.setAttribute("id", value); // set id
   square.addEventListener("click", squareClick); // add click function
   board.appendChild(square); // push square to board
-}
+};
 
 // create and add 9 squares to board
 const fillBoard = () => {
   for(let i = 1; i <= 9; i++) {
     makeSquare(i);
   }
-}
+};
 
 // computer choice
 const compTurn = () => {
@@ -132,16 +127,18 @@ const compTurn = () => {
   const getAllSquares = document.querySelectorAll(".square");
   if (currentPlayer === "O") { // computer is player "O"
     getAllSquares.forEach(square => {
-    if (!square.classList.contains("X") && !square.classList.contains("O")) compChoices.push(square) // push unclaimed squares to array
-  })
-  let compMove = compChoices[Math.floor(Math.random() * compChoices.length)]; // select random choice
-  compMove.classList.add("O"); // add selection class
-  compMove.classList.add("selected");
-  games.oArr.push(parseInt(compMove.getAttribute("id"))); // push square id value to oArr
-  compMove.removeEventListener("click", squareClick); // remove click function
-  checkWin(games.oArr, games.winSets); // check computer array against winning arrays
-  updateStatus();
+      if (!square.classList.contains("X") && !square.classList.contains("O")) compChoices.push(square); // push unclaimed squares to array
+    })
+    if (compChoices.length > 0) {
+      let compMove = compChoices[Math.floor(Math.random() * compChoices.length)]; // select random choice
+      compMove.classList.add("O");
+      compMove.classList.add("selected");
+      games.oArr.push(parseInt(compMove.getAttribute("id"))); // push square id value to oArr
+      compMove.removeEventListener("click", squareClick); // remove click function
+      checkWin(games.oArr, games.winSets); // check computer array against winning arrays
+    }
   }
+  updateStatus();
 }
 
 // update Game Status
@@ -181,7 +178,7 @@ const checkWin = (curArr, wins) => {
         document.querySelector("#reset-btn").style.visibility = "visible"; // reveal reset button
       }
     }
-  })
+  });
   if (games.xArr.concat(games.oArr).length === 9 && gameOver === false) { //check for draw
     games.total += 1; // add 1 to total counter
     games.draws += 1; // add 1 to draw counter
@@ -195,8 +192,4 @@ const checkWin = (curArr, wins) => {
     }
   }
 }
-
 pageBody.addEventListener("load", fillBoard());
-
-// ******************
-console.log(pageBody);

@@ -116,11 +116,31 @@ button {
 .X {
   background: rgba(0, 255, 0, 0.5);
   backdrop-filter: blur(2px);
+  animation: pulseX 2s;
 }
 
 .O {
   background: rgba(255, 0, 0, 0.5);
   backdrop-filter: blur(2px);
+  animation: pulseO 2s;
+}
+
+@keyframes pulseO {
+  0% {
+    background-color:rgba(243,225,0, .5)
+  }
+  100% {
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+}
+
+@keyframes pulseX {
+  0% {
+    background-color:rgba(243,225,0, .5)
+  }
+  100% {
+    background-color: rgba(0, 255, 0, 0.5);
+  }
 }
 
 @keyframes slide-right {
