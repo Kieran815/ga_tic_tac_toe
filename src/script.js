@@ -16,8 +16,11 @@ const getScreen = document.querySelector("#game_screen");
 const getFooter = document.querySelector("footer");
 
 // ********** CREATE SECONDARY ELEMENTS **********
-getHeader.innerText = `Tic-Tac-Toe`;
-
+// header title
+const createTitle = document.createElement("span");
+createTitle.setAttribute("id", "game-title")
+createTitle.innerText = `Tic-Tac-Toe`;
+getHeader.appendChild(createTitle)
 // create game status indicator
 const createGameStatus = document.createElement("section");
 createGameStatus.setAttribute("id", "game-status");
@@ -26,7 +29,7 @@ update.setAttribute("id", "player-turn");
 update.innerText = `Player Move: `;
 const updateSpan = document.createElement("span");
 updateSpan.innerText = "Status";
-const createGameCounter = document.createElement('p');
+const createGameCounter = document.createElement("p");
 createGameCounter.setAttribute("id", "game-counter");
 createScreen.appendChild(createGameStatus);
 createGameStatus.appendChild(update);
@@ -39,13 +42,14 @@ createBoard.classList.add("board");
 getScreen.appendChild(createBoard);
 
 // reset button
-const createResetButton = document.createElement('button');
-createResetButton.setAttribute('id', 'reset-btn');
+const createResetButton = document.createElement("button");
+createResetButton.setAttribute("id", "reset-btn");
 createResetButton.innerText = "Reset";
 createResetButton.style.visibility = "hidden";
 getScreen.appendChild(createResetButton);
 
 // ***** retrieve secondary elements
+const getTitle = document.querySelector("#game-title");
 const board = document.querySelector(".board");
 const gameStatus = document.querySelector("#game-status");
 const gameCounter = document.querySelector("#game-counter");
@@ -96,8 +100,10 @@ const togglePlayer = () => {
 // square click handler, passed to `makeSquare`;
 const squareClick = (e) => {
   currentPlayer === "X" ? playerArr = games.xArr : playerArr = games.oArr; // select correct array
-  playerArr.push(parseInt(e.target.getAttribute('id'))); // push integer of target id
+  playerArr.push(parseInt(e.target.getAttribute("id"))); // push integer of target id
   e.target.classList.add(`${currentPlayer}`); // add X or O
+  e.target.classList.add("selected");
+  console.log(e.target.classList);
   e.target.removeEventListener("click", squareClick); // remove click function
   checkWin(playerArr, games.winSets); // see if selection wins game
   togglePlayer(); // if no win
@@ -123,14 +129,15 @@ const fillBoard = () => {
 // computer choice
 const compTurn = () => {
   let compChoices = []; // empty array for current possible choices
-  const getAllSquares = document.querySelectorAll('.square');
+  const getAllSquares = document.querySelectorAll(".square");
   if (currentPlayer === "O") { // computer is player "O"
     getAllSquares.forEach(square => {
     if (!square.classList.contains("X") && !square.classList.contains("O")) compChoices.push(square) // push unclaimed squares to array
   })
   let compMove = compChoices[Math.floor(Math.random() * compChoices.length)]; // select random choice
-  compMove.classList.add('O'); // add selection class
-  games.oArr.push(parseInt(compMove.getAttribute('id'))); // push square id value to oArr
+  compMove.classList.add("O"); // add selection class
+  compMove.classList.add("selected");
+  games.oArr.push(parseInt(compMove.getAttribute("id"))); // push square id value to oArr
   compMove.removeEventListener("click", squareClick); // remove click function
   checkWin(games.oArr, games.winSets); // check computer array against winning arrays
   updateStatus();
@@ -154,14 +161,14 @@ const resetGame = () => {
   fillBoard(); // re-fill board
   updateStatus(); // update current player
 }
-createResetButton.addEventListener('click', resetGame); // add reset function to button
+createResetButton.addEventListener("click", resetGame); // add reset function to button
 
 // check player array against winning arrays
 const checkWin = (curArr, wins) => {
   const getAllSquares = document.querySelectorAll(".square"); // get array of all squares
   let gameOver = false;
   wins.forEach(win => { // for each winning array combination
-    if (win.every(num => curArr.includes(num))) { // if match with current player's selections
+    if (win.every(num => curArr.includes(num))) { // if match with current player"s selections
       games.total += 1; // add 1 to total counter
       currentPlayer === "X" ? games.xWins += 1 : games.oWins += 1; // add 1 to winner counter
       getAllSquares.forEach(square => square.removeEventListener("click", squareClick)); // remove click function

@@ -25,16 +25,16 @@
 ## Technical Requirements
 ### Your Tic Tac Toe app must:
 
-- Render a game board in the browser
-- Switch turns between X and O (or whichever markers you select)
-- Visually display which side won if a player gets three in a row, or show a draw if neither player wins
-- Include separate HTML / CSS / JavaScript files
-- Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles
-- Use JavaScript for DOM manipulation
-- Deploy your game online, where the rest of the world can access it
-- You can use GitHub Pages for deploying your project
-- Use semantic markup for HTML and CSS (adhere to best practices)
-- Have well-formatted, and well-commented code
+- Render a game board in the browser **COMPLETED**
+- Switch turns between X and O (or whichever markers you select) **COMPLETED**
+- Visually display which side won if a player gets three in a row, or show a draw if neither player wins **COMPLETED**
+- Include separate HTML / CSS / JavaScript files **COMPLETED**
+- Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles **COMPLETED**
+- Use JavaScript for DOM manipulation **COMPLETED** **COMPLETED**
+- Deploy your game online, where the rest of the world can access it **COMPLETED**
+  - You can use GitHub Pages for deploying your project **COMPLETED**
+- Use semantic markup for HTML and CSS (adhere to best practices) **COMPLETED**
+- Have well-formatted, and well-commented code **COMPLETED**
 
 ### User Stories: **COMPLETED**
 
@@ -60,15 +60,14 @@ As a user, I should:
 - Allow players to customize their tokens (X, O, name, picture, etc)
 - Use localStorage to persist data locally to allow games to continue after page refresh or loss of internet connectivity
 - Involve Audio in your game
-- Create an AI opponent: teach JavaScript to play an unbeatable game against you
+- Create an AI opponent: teach JavaScript to play an unbeatable game against you **COMPLETED**
 - Make your site fully responsive so that it is playable from a mobile phone **COMPLETED**
 - Get inventive with your styling e.g. use hover effects or animations
 
 ## README Suggestions
 
 - List technologies used
-- Link to wireframes and user stories.
-  **COMPLETED**
+- Link to wireframes and user stories. **COMPLETED**
 - Document your planning and tell a story about your development process and problem-solving strategy.
 - List unsolved problems which would be fixed in future iterations.
 - Describe how you solved for the winner
