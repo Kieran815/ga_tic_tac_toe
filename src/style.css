@@ -187,7 +187,6 @@ button {
 @media screen and (min-width: 700px) {
   header {
     font-size: 6em;
-    height: 10vh
   }
 
   .board {
