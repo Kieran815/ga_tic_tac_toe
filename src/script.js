@@ -1,12 +1,11 @@
 // ********** CREATE MAIN ELEMENTS **********
 const pageBody = document.querySelector("body");
-// audio elements
-// game start
+// game start audio
 const createStartSound = document.createElement('audio');
 createStartSound.setAttribute('id', 'takeoff');
 createStartSound.setAttribute('src', 'takeoff.mp3');
 pageBody.appendChild(createStartSound);
-// selection sound
+// selection audio
 const createSelSound = document.createElement('audio');
 createSelSound.setAttribute('id', 'selSquare');
 createSelSound.setAttribute('src', 'selectSquare.mp3');
